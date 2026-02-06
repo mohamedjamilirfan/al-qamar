@@ -112,7 +112,7 @@ const Hero: React.FC = memo(() => {
             }}></div>
 
           {/* DARK OVERLAY (important fix) */}
-          <div className="absolute inset-0 bg-black/30"></div>
+          <div className="absolute inset-0 bg-black/35"></div>
 
           {/* Content Container */}
           <div className="relative h-full max-w-7xl mx-auto px-6 flex flex-col justify-center items-start text-white">

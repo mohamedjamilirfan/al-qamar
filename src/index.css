@@ -1,0 +1,123 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Nunito', sans-serif;
+}
+
+:root {
+  --primary-color: #12377d;
+  --secondary-color: #b91c1d;
+  --tertiary-color: #000000;
+  --quaternary-color: #ffffff;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes bounce-subtle {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-slow {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1) translate(-50%, -50%);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.1) translate(-50%, -50%);
+  }
+}
+
+.animate-bounce-subtle {
+  animation: bounce-subtle 3s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 6s ease-in-out infinite;
+}
+
+/* Hide default scrollbar */
+::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Custom Scrollbar Styles */
+.custom-scroll-track {
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: transparent;
+  z-index: 9999;
+  pointer-events: auto;
+}
+
+.custom-scroll-thumb {
+  position: absolute;
+  right: 0;
+  width: 100%;
+  background: var(--primary-color);
+  border-radius: 9999px;
+  cursor: pointer;
+  transition:
+    width 0.3s ease,
+    background 0.3s ease;
+}
+
+.custom-scroll-track:hover .custom-scroll-thumb {
+  width: 10px;
+}
+
+/* Designer Credits Styling */
+.footer-link {
+  color: #ffd700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  color: #ffed4e;
+  transform: translateY(-1px);
+}
+
+.heartbeat {
+  color: #e90606;
+  animation: heartbeat 0.6s infinite alternate;
+  display: inline-block;
+  margin: 0 4px;
+  transform-origin: center;
+}
+
+@keyframes heartbeat {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.2);
+  }
+}

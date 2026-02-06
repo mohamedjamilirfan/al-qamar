@@ -229,7 +229,7 @@ ${formData.message || 'No additional message provided'}`;
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    placeholder="Mohamed Anwar"
+                    placeholder="Enter Your Name"
                     className="w-full px-5 py-4 rounded-2xl border border-gray-200 focus:outline-none focus:border-[#12377d] focus:ring-1 focus:ring-[#12377d] transition-all text-gray-700 placeholder-gray-400 shadow-sm"
                   />
                 </div>
@@ -243,7 +243,7 @@ ${formData.message || 'No additional message provided'}`;
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    placeholder="anwaralqamar@gmail.com"
+                    placeholder="Enter Your Email"
                     className="w-full px-5 py-4 rounded-2xl border border-gray-200 focus:outline-none focus:border-[#12377d] focus:ring-1 focus:ring-[#12377d] transition-all text-gray-700 placeholder-gray-400 shadow-sm"
                   />
                 </div>
@@ -262,7 +262,7 @@ ${formData.message || 'No additional message provided'}`;
                       value={formData.phone}
                       onChange={handleChange}
                       required
-                      placeholder="55 314 7444"
+                      placeholder="Enter Your Phone Number"
                       className="flex-1 px-5 py-4 rounded-2xl border border-gray-200 focus:outline-none focus:border-[#12377d] focus:ring-1 focus:ring-[#12377d] transition-all text-gray-700 placeholder-gray-400 shadow-sm"
                     />
                   </div>

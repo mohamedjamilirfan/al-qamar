@@ -1,4 +1,5 @@
 import React, { useCallback, memo } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Phone,
   Mail,
@@ -12,19 +13,22 @@ import {
 import { FaHeart } from 'react-icons/fa';
 
 const QUICK_LINKS = [
-  { name: 'Home', href: '#home' },
-  { name: 'About Us', href: '#about' },
-  { name: 'Services', href: '#services' },
-  { name: 'Process', href: '#process' },
-  { name: 'Contact', href: '#contact' },
+  { name: 'Home', href: '/' },
+  { name: 'About Us', href: '/about' },
+  { name: 'Our Services', href: '/services' },
+  { name: 'How It Works', href: '/process' },
+  { name: 'Contact Us', href: '/contact' },
+  { name: 'Our Team', href: '/team' },
+  { name: 'FAQ', href: '/faq' },
 ];
 
 const SERVICES_LINKS = [
-  { name: 'Residential Cleaning', href: '#services' },
-  { name: 'Commercial Cleaning', href: '#services' },
-  { name: 'Villa Cleaning', href: '#services' },
-  { name: 'Office Cleaning', href: '#services' },
-  { name: 'Windows Cleaning', href: '#services' },
+  { name: 'Residential Cleaning', href: '/services/residential-cleaning' },
+  { name: 'Villa Cleaning', href: '/services/villa-cleaning' },
+  { name: 'Commercial Cleaning', href: '/services/commercial-cleaning' },
+  { name: 'Deep Clean', href: '/services/deep-cleaning' },
+  { name: 'Hourly Cleaning', href: '/services/hourly-cleaning' },
+  { name: 'Sofa & Carpet', href: '/services/sofa-cleaning' },
 ];
 
 const SOCIAL_LINKS = [
@@ -102,15 +106,15 @@ const Footer: React.FC = memo(() => {
             <ul className="space-y-4">
               {QUICK_LINKS.map((link) => (
                 <li key={link.name}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.href}
                     className="text-gray-400 hover:text-white flex items-center gap-2 transition-colors group">
                     <ArrowRight
                       size={14}
                       className="text-[#12377d] group-hover:translate-x-1 transition-transform"
                     />
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -125,15 +129,15 @@ const Footer: React.FC = memo(() => {
             <ul className="space-y-4">
               {SERVICES_LINKS.map((service) => (
                 <li key={service.name}>
-                  <a
-                    href={service.href}
+                  <Link
+                    to={service.href}
                     className="text-gray-400 hover:text-white flex items-center gap-2 transition-colors group">
                     <ArrowRight
                       size={14}
                       className="text-[#12377d] group-hover:translate-x-1 transition-transform"
                     />
                     {service.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

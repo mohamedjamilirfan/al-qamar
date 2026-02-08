@@ -21,23 +21,33 @@ const About: React.FC = memo(() => {
     <section id="about" className="py-24 bg-white overflow-hidden">
       <div className="container mx-auto px-6 max-w-7xl text-center">
         {/* Badge & Title */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-16">
-          <span className="inline-block px-4 py-1.5 bg-[#ecf3ff] text-[#12377d] text-sm font-bold rounded-full mb-6">
+        <div className="text-center mb-16">
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="inline-block px-4 py-1.5 bg-[#ecf3ff] text-[#12377d] text-sm font-bold rounded-full mb-6">
             About Us
-          </span>
-          <h2 className="text-4xl md:text-4xl lg:text-4xl xl:text-6xl font-extrabold text-[#000000] mb-6 tracking-tight">
+          </motion.span>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-4xl md:text-4xl lg:text-4xl xl:text-6xl font-extrabold text-[#000000] mb-6 tracking-tight">
             Trusted Cleaning Services Since 2005
-          </h2>
-          <p className="text-gray-500 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-medium">
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-gray-500 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-medium">
             Expert residential and commercial cleaning services in Sharjah,
             delivering quality since 2005.
-          </p>
-        </motion.div>
+          </motion.p>
+        </div>
 
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
           {/* Image Column */}

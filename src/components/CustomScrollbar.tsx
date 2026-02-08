@@ -55,48 +55,51 @@ const CustomScrollbar: React.FC = memo(() => {
     };
   }, [updateScrollTop]);
 
-  const handleDrag = useCallback((e: React.MouseEvent) => {
-    e.preventDefault();
-    const startY = e.clientY;
-    const startTop = scrollTop;
+  const handleDrag = useCallback(
+    (e: React.MouseEvent) => {
+      e.preventDefault();
+      const startY = e.clientY;
+      const startTop = scrollTop;
 
-    document.body.style.userSelect = 'none';
-    (document.body.style as any).webkitUserSelect = 'none';
+      document.body.style.userSelect = 'none';
+      (document.body.style as any).webkitUserSelect = 'none';
 
-    const onMouseMove = (moveEvent: MouseEvent) => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      const onMouseMove = (moveEvent: MouseEvent) => {
+        if (rafRef.current) cancelAnimationFrame(rafRef.current);
 
-      rafRef.current = requestAnimationFrame(() => {
-        const delta = moveEvent.clientY - startY;
-        const trackHeight = trackRef.current
-          ? trackRef.current.offsetHeight - thumbHeight
-          : 0;
+        rafRef.current = requestAnimationFrame(() => {
+          const delta = moveEvent.clientY - startY;
+          const trackHeight = trackRef.current
+            ? trackRef.current.offsetHeight - thumbHeight
+            : 0;
 
-        let newTop = Math.max(0, Math.min(startTop + delta, trackHeight));
-        setScrollTop(newTop);
+          let newTop = Math.max(0, Math.min(startTop + delta, trackHeight));
+          setScrollTop(newTop);
 
-        const viewport = window.innerHeight;
-        const fullHeight = document.documentElement.scrollHeight;
-        const maxScroll = fullHeight - viewport;
+          const viewport = window.innerHeight;
+          const fullHeight = document.documentElement.scrollHeight;
+          const maxScroll = fullHeight - viewport;
 
-        if (trackHeight > 0) {
-          const newScroll = (newTop / trackHeight) * maxScroll;
-          window.scrollTo(0, newScroll);
-        }
-      });
-    };
+          if (trackHeight > 0) {
+            const newScroll = (newTop / trackHeight) * maxScroll;
+            window.scrollTo(0, newScroll);
+          }
+        });
+      };
 
-    const onMouseUp = () => {
-      document.body.style.userSelect = '';
-      (document.body.style as any).webkitUserSelect = '';
-      window.removeEventListener('mousemove', onMouseMove);
-      window.removeEventListener('mouseup', onMouseUp);
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-    };
+      const onMouseUp = () => {
+        document.body.style.userSelect = '';
+        (document.body.style as any).webkitUserSelect = '';
+        window.removeEventListener('mousemove', onMouseMove);
+        window.removeEventListener('mouseup', onMouseUp);
+        if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      };
 
-    window.addEventListener('mousemove', onMouseMove);
-    window.addEventListener('mouseup', onMouseUp);
-  }, [scrollTop, thumbHeight]);
+      window.addEventListener('mousemove', onMouseMove);
+      window.addEventListener('mouseup', onMouseUp);
+    },
+    [scrollTop, thumbHeight],
+  );
 
   return (
     <div className="custom-scroll-track" ref={trackRef}>
@@ -110,4 +113,3 @@ const CustomScrollbar: React.FC = memo(() => {
 });
 
 export default CustomScrollbar;
-

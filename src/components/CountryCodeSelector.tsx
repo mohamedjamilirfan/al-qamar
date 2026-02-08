@@ -263,7 +263,7 @@ const CountryCodeSelector: React.FC<CountryCodeSelectorProps> = ({
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center justify-between cursor-pointer w-[120px] px-3 py-3.5 border border-gray-200 rounded-2xl focus:border-[#12377d] focus:ring-1 focus:ring-[#12377d] outline-none transition-colors bg-white shadow-sm">
+        className="flex items-center justify-between cursor-pointer w-full sm:w-[120px] px-3 py-3.5 border border-gray-200 rounded-2xl focus:border-[#12377d] focus:ring-1 focus:ring-[#12377d] outline-none transition-colors bg-white shadow-sm">
         <div className="flex items-center gap-2">
           <img
             src={`https://flagcdn.com/w40/${selectedCountry.code.toLowerCase()}.png`}

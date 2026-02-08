@@ -4,7 +4,7 @@ import About from '../sections/About.tsx';
 import Services from '../sections/Services';
 import WhyUs from '../sections/WhyUs';
 import Process from '../sections/Process';
-import Contact from '../sections/Contact.tsx';
+import Testimonials from '../sections/Testimonials';
 
 const HomePage: React.FC = () => {
   return (
@@ -14,7 +14,7 @@ const HomePage: React.FC = () => {
       <Services />
       <WhyUs />
       <Process />
-      <Contact />
+      <Testimonials />
     </div>
   );
 };

@@ -1,115 +1,139 @@
 import React, { memo } from 'react';
 import { motion } from 'framer-motion';
-import { Home, Building2, Check } from 'lucide-react';
-import villaicon from '../assets/villa-icon.png';
+import { Link } from 'react-router-dom';
+import {
+  Home,
+  Building2,
+  Sparkles,
+  Waves,
+  Clock,
+  Armchair,
+  Wind,
+  Car,
+  Check,
+  ArrowRight,
+} from 'lucide-react';
+import { SERVICES_DATA } from '../constants/servicesData';
 
-const services = [
-  {
-    title: 'Residential Cleaning',
-    description:
-      'Transform your home into a pristine sanctuary. Our expert team handles every detail from deep cleaning to regular maintenance.',
-    icon: <Home size={40} className="text-white" />,
-    color: 'bg-[#3b82f6]', // Bright Blue
-    features: [
-      'Deep cleaning',
-      'Regular maintenance',
-      'Move-in/out cleaning',
-      'Custom schedules',
-    ],
-  },
-  {
-    title: 'Commercial Cleaning',
-    description:
-      'Keep your workplace spotless and professional. We provide comprehensive cleaning solutions for offices, retail spaces, and facilities.',
-    icon: <Building2 size={40} className="text-white" />,
-    color: 'bg-[#10b981]', // Success Green
-    features: [
-      'Office cleaning',
-      'Retail spaces',
-      'After-hours service',
-      'Tailored plans',
-    ],
-  },
-  {
-    title: 'Villa Cleaning',
-    description:
-      'Premium care for luxury properties. Our specialized villa cleaning service ensures every corner of your estate gleams.',
-    icon: <img src={villaicon} alt="Premium Villa Cleaning Services Sharjah" />,
-    color: 'bg-[#6366f1]', // Indigo/Purple
-    features: [
-      'Estate cleaning',
-      'Garden areas',
-      'Pool maintenance',
-      'Premium care',
-    ],
-  },
-];
+const iconMap: Record<string, React.ReactNode> = {
+  Home: <Home size={40} className="text-white" />,
+  Sparkles: <Sparkles size={40} className="text-white" />,
+  Building2: <Building2 size={40} className="text-white" />,
+  Waves: <Waves size={40} className="text-white" />,
+  Clock: <Clock size={40} className="text-white" />,
+  Armchair: <Armchair size={40} className="text-white" />,
+  Wind: <Wind size={40} className="text-white" />,
+  Car: <Car size={40} className="text-white" />,
+};
 
 const Services: React.FC = memo(() => {
+  // Only show featured services on the homepage
+  const featuredServices = SERVICES_DATA.filter((s) => s.featured);
+
   return (
-    <section id="services" className="py-20 bg-white">
+    <section id="services" className="py-24 bg-white relative overflow-hidden">
+      {/* Decorative background element */}
+      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-100 to-transparent"></div>
+
       <div className="container mx-auto px-6 max-w-7xl text-center">
         {/* Badge & Title */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-16">
-          <span className="inline-block px-4 py-1.5 bg-[#ecf3ff] text-[#12377d] text-sm font-bold rounded-full mb-6">
+        <div className="text-center mb-16">
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="inline-block px-4 py-1.5 bg-[#ecf3ff] text-[#12377d] text-sm font-bold rounded-full mb-6">
             Our Services
-          </span>
-          <h2 className="text-4xl md:text-4xl lg:text-4xl xl:text-6xl font-extrabold text-[#000000] mb-6 tracking-tight">
+          </motion.span>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-4xl md:text-4xl lg:text-4xl xl:text-6xl font-extrabold text-[#000000] mb-6 tracking-tight">
             Comprehensive Cleaning Solutions
-          </h2>
-          <p className="text-gray-500 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-            From homes to businesses and luxury villas, we provide top-tier
-            cleaning services tailored to your needs.
-          </p>
-        </motion.div>
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-gray-500 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-medium">
+            From luxury villas to commercial spaces, we provide professional
+            cleaning services tailored to your specific environment.
+          </motion.p>
+        </div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {services.map((service, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {featuredServices.map((service, index) => (
             <motion.div
-              key={index}
+              key={service.slug}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.2, duration: 0.8 }}
-              className="flex flex-col group cursor-default">
+              transition={{ delay: index * 0.1, duration: 0.8 }}
+              className="flex flex-col group">
               {/* Card Header */}
               <div
-                className={`${service.color} p-10 rounded-t-[0.8rem] transition-transform duration-500 group-hover:-translate-y-2`}>
-                <div className="mb-6">{service.icon}</div>
-                <h3 className="text-2xl font-bold text-white text-left tracking-tight">
+                className={`${service.color} p-10 rounded-t-[2.5rem] relative overflow-hidden transition-transform duration-500 group-hover:-translate-y-2 shadow-lg`}>
+                <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl"></div>
+                <div className="mb-8 relative z-10 w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center backdrop-blur-sm group-hover:scale-110 transition-transform duration-500">
+                  {iconMap[service.iconName]}
+                </div>
+                <h3 className="text-2xl font-bold text-white text-left tracking-tight relative z-10">
                   {service.title}
                 </h3>
               </div>
 
               {/* Card Body */}
-              <div className="bg-white p-10 flex-grow rounded-b-[0.8rem] shadow-sm border-x border-b border-gray-100 text-left transition-all duration-500 group-hover:shadow-2xl">
-                <p className="text-gray-500 mb-8 leading-relaxed font-medium">
-                  {service.description}
+              <div className="bg-white p-10 flex-grow rounded-b-[2.5rem] shadow-sm border-x border-b border-gray-100 text-left transition-all duration-500 group-hover:shadow-2xl group-hover:border-blue-100">
+                <p className="text-gray-500 mb-8 leading-relaxed font-medium line-clamp-3">
+                  {service.shortDescription}
                 </p>
 
-                <ul className="space-y-4">
-                  {service.features.map((feature, idx) => (
+                <ul className="space-y-4 mb-10">
+                  {service.features.slice(0, 3).map((feature, idx) => (
                     <li key={idx} className="flex items-center gap-3">
-                      <Check
-                        size={18}
-                        className="text-[#12377d] flex-shrink-0"
-                      />
+                      <div className="w-5 h-5 rounded-full bg-emerald-50 flex items-center justify-center shrink-0">
+                        <Check size={12} className="text-emerald-500" />
+                      </div>
                       <span className="text-gray-700 font-semibold text-sm">
                         {feature}
                       </span>
                     </li>
                   ))}
                 </ul>
+
+                {/* Card Action */}
+                <Link
+                  to={`/services/${service.slug}`}
+                  className="inline-flex items-center gap-2 text-[#12377d] font-extrabold hover:gap-4 transition-all duration-300 group/link">
+                  Learn More
+                  <ArrowRight
+                    size={20}
+                    className="group-hover/link:translate-x-1 transition-transform"
+                  />
+                </Link>
               </div>
             </motion.div>
           ))}
         </div>
+
+        {/* View All Services Link */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-20">
+          <Link
+            to="/services"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-[#12377d] text-white font-bold hover:bg-[#b91c1d] transition-all duration-300 shadow-xl shadow-blue-900/20 hover:shadow-red-900/20 active:scale-95">
+            Explore All Services
+            <ArrowRight size={20} />
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

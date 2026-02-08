@@ -40,23 +40,33 @@ const WhyUs: React.FC = memo(() => {
       className="py-20 bg-gradient-to-b from-gray-50 to-white">
       <div className="container mx-auto px-6 max-w-7xl text-center">
         {/* Badge & Title */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-16">
-          <span className="inline-block px-4 py-1.5 bg-[#ecf3ff] text-[#12377d] text-sm font-bold rounded-full mb-6">
+        <div className="text-center mb-16">
+          <motion.span
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="inline-block px-4 py-1.5 bg-[#ecf3ff] text-[#12377d] text-sm font-bold rounded-full mb-6">
             Why Choose Us
-          </span>
-          <h2 className="text-4xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-black mb-6 tracking-tight">
+          </motion.span>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-4xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-black mb-6 tracking-tight">
             The Al Qamar Difference
-          </h2>
-          <p className="text-gray-500 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-medium">
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-gray-500 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-medium">
             We combine expertise, quality, and care to deliver exceptional
             cleaning experiences.
-          </p>
-        </motion.div>
+          </motion.p>
+        </div>
 
         {/* Timeline-style features */}
         <div className="relative mt-8 lg:mt-12">

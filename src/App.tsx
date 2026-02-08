@@ -1,11 +1,20 @@
 import { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
 import HomePage from './pages/HomePage';
+import ServicesPage from './pages/ServicesPage';
+import TeamPage from './pages/TeamPage';
+import AboutPage from './pages/AboutPage';
+import ContactPage from './pages/ContactPage';
+import ProcessPage from './pages/ProcessPage';
+import FAQPage from './pages/FAQPage';
+import ServiceDetailPage from './pages/ServiceDetailPage';
 import CustomScrollbar from './components/CustomScrollbar';
 import Footer from './components/Footer';
 import Preloader from './components/Preloader';
 import ScrollToTop from './components/ScrollToTop';
+import ScrollToTopOnNavigate from './components/ScrollToTopOnNavigate';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -31,10 +40,20 @@ function App() {
       <CustomScrollbar />
       <Navbar />
       <main className="overflow-hidden">
-        <HomePage />
+        <ScrollToTopOnNavigate />
+        <ScrollToTop />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/services/:slug" element={<ServiceDetailPage />} />
+          <Route path="/team" element={<TeamPage />} />
+          <Route path="/process" element={<ProcessPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/faq" element={<FAQPage />} />
+        </Routes>
       </main>
       <Footer />
-      <ScrollToTop />
     </div>
   );
 }
